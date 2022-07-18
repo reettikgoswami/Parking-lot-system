@@ -19,4 +19,13 @@ class ParkingLot
     slots[position] = nil
   end
 
+  def filter_car_by_color(color)
+    reg_no_array = []
+    slots.each do |slot|
+      if slot.present? && slot.color == color
+        reg_no_array << slot.reg_no
+      end
+    end
+  end
+
 end
