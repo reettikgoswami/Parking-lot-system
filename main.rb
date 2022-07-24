@@ -1,3 +1,3 @@
 require_relative 'lib/parking_system.rb'
 
-parking_system = ParkingSystem.new
+parking_system = ParkingSystem.new(10)

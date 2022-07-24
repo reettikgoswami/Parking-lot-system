@@ -1,6 +1,4 @@
-
 class ParkingLot
-  
   def initialize(size)
     @slots = Array.new(size)
   end
@@ -11,8 +9,8 @@ class ParkingLot
     end
   end
 
-  def allot_parking_space(car, position)
-    slots[position] = car
+  def allot_parking_space(parking_ticket, position)
+    slots[position] = parking_ticket
   end
 
   def leave_parking_space(position)
@@ -21,11 +19,21 @@ class ParkingLot
 
   def filter_car_by_color(color)
     reg_no_array = []
-    slots.each do |slot|
-      if slot.present? && slot.color == color
-        reg_no_array << slot.reg_no
-      end
+    slots.each do |ticket|
+      reg_no_array << ticket.car.reg_no if ticket.present? && ticket.car.color == color
     end
   end
 
+  def find_parking_ticket(reg_no)
+    slots.each do |ticket|
+      return ticket if ticket.present? && ticket.car.reg_no == reg_no
+    end
+  end
+
+  def filter_ticket_by_color(color)
+    tickets = []
+    slots.each do |ticket|
+      tickets << ticket.car.reg_no if ticket.present? && ticket.car.color == color
+    end
+  end
 end
